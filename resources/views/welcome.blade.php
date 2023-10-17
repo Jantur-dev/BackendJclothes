@@ -23,8 +23,13 @@
         .text-auth:hover {
             color: rgb(150, 150, 248);
         }
+
         .text-auth {
-            margin-right: 5px; color: rgb(128, 128, 128); font-size: 17px; font-weight: 500;transition:0.5s;
+            margin-right: 5px;
+            color: rgb(128, 128, 128);
+            font-size: 17px;
+            font-weight: 500;
+            transition: 0.5s;
         }
     </style>
 
@@ -45,8 +50,8 @@
     <!--==================== HEADER ====================-->
     <!-- headerrrrr -->
     <header class="header" id="header">
-        <nav class="nav container">
-            <a href="#" class="nav__logo "><img src="assets/img/favicon/favicon.ico" alt="">JCLothes</a>
+        <nav class="nav container primary-navigation">
+            <a href="#" class="nav__logo "><img src="assets/img/logoBlackMode.png" alt="">JCLothes</a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
@@ -54,13 +59,21 @@
                         <a href="#home" class="nav__link active-link">Home</a>
                     </li>
                     <li class="nav__item">
-                        <a href="#custom" class="nav__link">Design</a>
-                    </li>
+                        <a href="/design" class="nav__link">Design Own &dtrif;</a>
+                        <ul class="dropdown">
+                            <li><a href="#">T-Shirt</a></li>
+                            <li><a href="#">Long Sleeves</a></li>
+                            <li><a href="#">Hoodie</a></li>
+                            <li><a href="#">Sweater</a></li>
+                            <li><a href="#">Crewneck</a></li>
+                            <li><a href="#">Jacket</a></li>
+                            <li><a href="#">Varsity</a></li>
+                        </ul>
                     <li class="nav__item">
                         <a href="#products" class="nav__link">Our Product</a>
                     </li>
                     <li class="nav__item">
-                        <a href="#new" class="nav__link">New Design</a>
+                        <a href="#new" class="nav__link">Contact</a>
                     </li>
                 </ul>
 
@@ -82,8 +95,8 @@
                 <div class="nav__toggle" id="nav-toggle">
                     <i class='bx bx-grid-alt'></i>
                 </div>
-
             </div>
+
             <div
                 class="sm:flex sm:justify-center sm:items-center min-h-screen bg-center bg-gray-100 selection:bg-red-500 selection:text-white">
                 @if (Route::has('login'))
@@ -391,7 +404,32 @@
                 </div>
 
                 <div class="testimonial__images">
-                    <div class="testimonial__square"></div>
+                    <div class="testimonial__square">
+                        <div class="testimonial_comment_container">
+                            <div class="testimonial_comment_head">
+                                <img src="assets/img/testimonial1.jpg" alt="">
+                                <div class="rating-container">
+                                    <h3>Add a comment</h3>
+                                    <div class="rating">
+                                        <i class='bx bxs-star star' onclick=""></i>
+                                        <i class='bx bxs-star star'></i>
+                                        <i class='bx bxs-star star'></i>
+                                        <i class='bx bxs-star star'></i>
+                                        <i class='bx bxs-star star'></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <form action="" method="post">
+                                    <textarea name="comment" id="comment" placeholder="Comment"></textarea>
+                                    <div class="button-container">
+                                        <button type="submit" name="submit" class="kirim">Kirim</button>
+                                        <button type="submit" name="cancel" class="cancel">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <img src="assets/img/testimonial.png" alt="" class="testimonial__img">
                 </div>
             </div>
@@ -435,7 +473,7 @@
                         <article class="new__card swiper-slide">
                             <span class="new__tag">New</span>
 
-                            <img src="assets/img/product/hoodieTampakBelakang.png">
+                            <img src="assets/img/product/hoodieTampakBelakang.png" class="new__img">
 
                             <div class="new__data">
                                 <h3 class="new__title">Gojo Hoodie</h3>
@@ -554,8 +592,8 @@
 
     <!--=============== MAIN JS ===============-->
     <script src="{{ url('assets/js/main.js') }}"></script>
-    </div>
-    </div>
+
+    <script src="{{url('assets/js/star.js')}}"></script>
 </body>
 
 </html>
