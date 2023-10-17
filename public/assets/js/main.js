@@ -19,6 +19,8 @@ if(navClose){
     })
 }
 
+// OnCLick Dropdown
+
 /*=============== REMOVE MENU MOBILE ===============*/
 const navLink = document.querySelectorAll('.nav__link')
 
