@@ -2,14 +2,15 @@
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DesignCategoryController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Symfony\Component\VarDumper\VarDumper;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,13 @@ Route::get('/confirm-checkout', [PesananController::class, 'confirm']);
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::post('/profile', [ProfileController::class, 'update']);
 
+Route::get('/design', function(){
+    $data = DB::table('design_categories')->get();
+    return view('design.index',['data'=>$data]);
+})->middleware('auth');
+Route::get('/design/{nama}', [DesignCategoryController::class, 'index'])->middleware('auth');
+
+// authentication
 Route::get('/email/verify', function () {
     return view('auth.verify');
 })->middleware('auth')->name('verification.notice');
@@ -72,6 +80,8 @@ Route::get('/auth/github/callback', function () {
     ]);
  
     Auth::login($user);
+
+    $user->sendEmailVerificationNotification();
  
     return redirect('/home');
 });
@@ -93,8 +103,10 @@ Route::get('/auth/google/callback', function () {
         'google_token' => $googleUser->token,
         'google_refresh_token' => $googleUser->refreshToken,
     ]);
- 
+
     Auth::login($user);
  
+    $user->sendEmailVerificationNotification();
+
     return redirect('/home');
 });
