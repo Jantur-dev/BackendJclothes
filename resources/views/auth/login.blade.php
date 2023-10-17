@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="w-auto">
                                     <a href="/auth/google/redirect" class="btn btn-light border border-dark rounded" style="width: 180px; font-size: 16px;">
-                                        <img src="{{url('assets/img/google-logo.png')}}" alt="" width="35" class="rounded-circle" style="margin-right: 5px;">
+                                        <img src="{{url('assets/img/google.png')}}" alt="" width="35" class="rounded-circle" style="margin-right: 5px;">
                                         Google
                                     </a>
                                 </div>
