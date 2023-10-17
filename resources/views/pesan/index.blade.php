@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <img src="{{ url('assets/img/product/' . $barang->gambar) }}" alt="">
+                                <img src="{{ url('assets/img/product/' . $barang->gambar) }}" alt="" style="width: 500px">
                                 @if ($barang->stok == 0)
                                     <h3 class="text-danger">Barang tidak tersedia!!</h3>
                                 @endif
