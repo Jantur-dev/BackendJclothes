@@ -4,8 +4,8 @@
     <!--==================== HEADER ====================-->
     <!-- headerrrrr -->
     <header class="header" id="header">
-        <nav class="nav container">
-            <a href="#" class="nav__logo "><img src="assets/img/favicon/favicon.ico" alt="">JCLothes</a>
+        <nav class="nav container primary-navigation">
+            <a href="#" class="nav__logo "><img src="assets/img/logoBlackMode.png" alt="">JCLothes</a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
@@ -13,13 +13,20 @@
                         <a href="#home" class="nav__link active-link">Home</a>
                     </li>
                     <li class="nav__item">
-                        <a href="#custom" class="nav__link">Design</a>
-                    </li>
+                        <a href="/design" class="nav__link">Design Own &dtrif;</a>
+                        <ul class="dropdown" style="position: absolute;">
+                            <?php
+                            $data = DB::table('design_categories')->get();
+                            ?>
+                            @foreach ($data as $item)
+                                <li><a href="/design/{{ $item->nama }}">{{ ucfirst($item->nama) }}</a></li>
+                            @endforeach
+                        </ul>
                     <li class="nav__item">
                         <a href="#products" class="nav__link">Our Product</a>
                     </li>
                     <li class="nav__item">
-                        <a href="#new" class="nav__link">New Design</a>
+                        <a href="#new" class="nav__link">Contact</a>
                     </li>
                 </ul>
 
@@ -29,7 +36,7 @@
                     <i class="bx bx-x"></i>
                 </div>
             </div>
-            <!-- navButton dark mode dan chart -->
+
             <div class="nav__btns">
                 <!-- Theme change button -->
                 <i class='bx bx-moon change-theme' id="theme-button"></i>
@@ -70,7 +77,7 @@
                         @endif
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a id="navbarDropdown" class="dropdown-toggle fw-bold" href="" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
@@ -259,17 +266,19 @@
             <div class="products__container grid">
                 @foreach ($barangs as $barang)
                     <article class="products__card">
-                        <div
-                            style="width: 100%; height: 100%; position: absolute; top: 0; background-color: <?= $barang->stok == 0 ? 'rgba(0,0,0,0.5)' : '' ?>">
-                        </div>
-                        <img src="{{ url('assets/img/product/' . $barang->gambar) }}" alt=""
-                            class="products__img">
+                        <a href="pesan/{{ $barang->id }}">
+                            <div
+                                style="width: 100%; height: 100%; position: absolute; top: 0; background-color: <?= $barang->stok == 0 ? 'rgba(0,0,0,0.5)' : '' ?>">
+                            </div>
+                            <img src="{{ url('assets/img/product/' . $barang->gambar) }}" alt=""
+                                class="products__img">
 
-                        <h3 class="products__title">{{ $barang->nama_barang }}</h3>
-                        <span class="products__price">Rp{{ number_format($barang->harga) }}</span>
+                            <h3 class="products__title">{{ $barang->nama_barang }}</h3>
+                            <span class="products__price">Rp{{ number_format($barang->harga) }}</span>
 
-                        <a href="pesan/{{ $barang->id }}" class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
+                            <a href="pesan/{{ $barang->id }}" class="products__button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </a>
                         </a>
                     </article>
                 @endforeach
@@ -348,9 +357,34 @@
                         <i class='bx bx-left-arrow-alt'></i>
                     </div>
                 </div>
-
+                
                 <div class="testimonial__images">
-                    <div class="testimonial__square"></div>
+                    <div class="testimonial__square">
+                        <div class="testimonial_comment_container">
+                            <div class="testimonial_comment_head">
+                                <img src="assets/img/testimonial1.jpg" alt="">
+                                <div class="rating-container">
+                                    <h3>Add a comment</h3>
+                                    <div class="rating">
+                                        <i class='bx bxs-star star' onclick=""></i>
+                                        <i class='bx bxs-star star'></i>
+                                        <i class='bx bxs-star star'></i>
+                                        <i class='bx bxs-star star'></i>
+                                        <i class='bx bxs-star star'></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <form action="" method="post">
+                                    <textarea name="comment" id="comment" placeholder="Comment"></textarea>
+                                    <div class="button-container">
+                                        <button type="submit" name="submit" class="kirim">Kirim</button>
+                                        <button type="submit" name="cancel" class="cancel">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <img src="assets/img/testimonial.png" alt="" class="testimonial__img">
                 </div>
             </div>
@@ -394,7 +428,7 @@
                         <article class="new__card swiper-slide">
                             <span class="new__tag">New</span>
 
-                            <img src="assets/img/product/hoodieTampakBelakang.png">
+                            <img src="assets/img/product/hoodieTampakBelakang.png" class="new__img">
 
                             <div class="new__data">
                                 <h3 class="new__title">Gojo Hoodie</h3>
