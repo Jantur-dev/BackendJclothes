@@ -14,46 +14,43 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-     <!-- Font style -->
-     <style>
+    <!-- Font style -->
+    <style>
         /*=============== GOOGLE FONTS ===============*/
-        @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+        /* @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
         html {
             font-family: 'Roboto', sans-serif;
-        }
+        } */
     </style>
 
     <!--=============== FAVICON ===============-->
-    <link rel="shortcut icon" href="{{ url('assets/img/favicon/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/img/favicon/favicon.ico" type="image/x-icon">
 
-    <!--=============== BOXICONS ===============-->
+    <!--=============== BO  1XICONS ===============-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
     <!--=============== SWIPER CSS ===============-->
-    <link rel="stylesheet" href="{{ url('assets/css/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="{{ url('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-</head>
 
-<body>
-    <div id="app">
-        <main class="py-4">
-            @yield('content')
+<body class="antialiased">
+    @yield('content')
 
-            <!--=============== SWIPER JS ===============-->
-            <script src="assets/js/swiper-bundle.min.js"></script>
+    <!--=============== SWIPER JS ===============-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
 
-            <!--=============== MAIN JS ===============-->
-            <script src="assets/js/main.js"></script>
+    <!--=============== MAIN JS ===============-->
+    <script src="assets/js/main.js"></script>
 
-            <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-        </main>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
-        @include('sweetalert::alert')
-    </div>
+    <script src="assets/js/star.js"></script>
+
+    @include('sweetalert::alert')
 </body>
 
 </html>
